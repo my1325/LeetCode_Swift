@@ -1,0 +1,7 @@
+*.xcworkspace
+*.xcodeproj
+DerivedData/
+*.lock
+.vscode/
+*.playground
+.idea/
