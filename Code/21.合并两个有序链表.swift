@@ -15,6 +15,7 @@
 
 class Solution {
     
+    /// 最直接的方法，通过数组来排序
     func mergeTwoLists1(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
         var array: [ListNode] = []
         var temL1: ListNode? = l1
@@ -41,6 +42,7 @@ class Solution {
         return temL1?.next
     }
 
+    
     func mergeTwoLists(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
         let node: ListNode = ListNode(0)
         var cur: ListNode? = node
