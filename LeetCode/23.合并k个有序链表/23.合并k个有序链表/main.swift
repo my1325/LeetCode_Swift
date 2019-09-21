@@ -8,4 +8,26 @@
 
 import Foundation
 
+ public class ListNode {
+    public var val: Int
+    public var next: ListNode?
+    public init(_ val: Int) {
+        self.val = val
+        self.next = nil
+    }
+}
+
+func createListNodes(_ values: [[Int]]) -> [ListNode?] {
+    return values.map({ valueList in
+        let head = ListNode(0)
+        var cur: ListNode? = head
+        for value in valueList {
+            let node = ListNode(value)
+            cur?.next = node
+            cur = cur?.next
+        }
+        return head.next
+    })
+}
+
 print("Hello, World!")

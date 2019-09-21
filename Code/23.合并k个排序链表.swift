@@ -14,16 +14,6 @@
  *     }
  * }
  */
-
-   public class ListNode {
-     public var val: Int
-     public var next: ListNode?
-     public init(_ val: Int) {
-         self.val = val
-         self.next = nil
-     }
-   }
-
 class Solution {
     
     /// 逐一比较法，此算法swift会超时
@@ -95,10 +85,8 @@ class Solution {
         
         while step < lists.count {
             let nextStop = step << 1
-            var index = 0
-            while index + step < lists.count {
+            for index in stride(from: 0, to: lists.count - 1, by: nextStop) where index + step < lists.count {
                 lists[index] = mergeTwoLists(lists[index], lists[index + step])
-                index += nextStop
             }
             step = nextStop
         }
