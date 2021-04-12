@@ -62,19 +62,25 @@ class Solution {
 
     var _cacheSituation: [Int: [(Int, Int)]] = [:]
     func _buildTree(_ array: [Int]) -> Int {
-        for _index in 0 ..< array.count {
-            let _value = array[_index]
-            for __index in 0 ..< array.count {
-                let __value = array[__index]
-                let product = _value * __value
-                if let cacheSituation = _cacheSituation[product] {
-                    var __cacheSituation = cacheSituation
-                    __cacheSituation.append((_value, __value))
-                    _cacheSituation[product] = __cacheSituation
-                }
+    var _maxNumber = 0
+    for _index in 0 ..< array.count {
+        let _value = array[_index]
+        for __index in 0 ..< array.count {
+            let __value = array[__index]
+            let product = _value * __value
+            if _index > 0, product > _maxNumber {
+                continue
+            }
+            _maxNumber = max(_maxNumber, __value)
+            
+            if let cacheSituation = _cacheSituation[product] {
+                var __cacheSituation = cacheSituation
+                __cacheSituation.append((_value, __value))
+                _cacheSituation[product] = __cacheSituation
             }
         }
-        return getCounts() + array.count
+    }
+    return getCounts() + array.count
     }
 
     func getCounts() -> Int {
